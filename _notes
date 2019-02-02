@@ -20,6 +20,7 @@ __notes_cmd ()
     new:'Create new file'
     ls:'<pattern> List notes by path'
     find:'[pattern] Search notes by filename and path'
+    ack:'<pattern> Search notes by content'
     grep:'<pattern> Search notes by content'
     search:'[pattern] Search notes by filename or content'
     open:'<name> Open a notes for editing by full name'

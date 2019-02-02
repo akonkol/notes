@@ -82,6 +82,28 @@ find_notes() {
     fi
 }
 
+ack_notes() {
+    if [[ ! $(command ack) ]]; then
+        printf "Ack not installed."
+        return 1
+    fi
+    if [ ! "$#" -gt 0 ]; then
+        printf "Ack requires a pattern, but one was not provided."
+        return 1
+    fi
+
+    local ack_output=$(ack "$*" "$notes_dir" 2>&1)
+    local ack_result=$?
+    local formatted_output=$(printf "$ack_output" | without_notes_dir)
+
+    if [[ $ack_result == 0 && "$formatted_output" ]]; then
+        printf "$formatted_output\n"
+        return 0
+    else
+        return 2
+    fi
+}
+
 grep_notes() {
     if [ ! "$#" -gt 0 ]; then
         printf "Grep requires a pattern, but none was provided."
@@ -247,6 +269,9 @@ main() {
     fi
 
     case "$1" in
+        "ack"|"a" )
+            cmd="ack_notes"
+            ;;
         "new"|"n" )
             cmd="new_note"
             ;;

@@ -241,6 +241,7 @@ Usage:
     notes new|n <name>                    # Create a new note
     notes ls <pattern>                    # List notes by path
     notes find|f [pattern]                # Search notes by filename and path
+    notes ack|a <pattern>                 # Search notes by content
     notes grep|g <pattern>                # Search notes by content
     notes search|s [pattern]              # Search notes by filename or content
     notes open|o                          # Open your notes directory
